@@ -1,9 +1,17 @@
 # salsaflow-build
 
-SalsaFlow custom build including some extra unsupported modules
+This repository contains scripts and resources to compile a custom build of
+[SalsaFlow](https://github.com/salsaflow/salsaflow).
 
-## Usage
+The extra modules linked in the resulting `salsaflow` executable are following:
 
-Run `go run build.go` to build `salsaflow` binaries.
+* `jira` - JIRA (issue tracker module)
+* `reviewboard` - Review Board (code review tool module)
 
-The build artifacts will appear in the `build` directory.
+The module sources can be found in `workspace/src/modules`.
+
+## Build
+
+Run `go run install.go` to build `salsaflow` binaries. The script uses
+`go install` by default, so the executables will appear in `bin`
+of your current workspace.
