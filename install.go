@@ -41,7 +41,7 @@ func run() error {
 			their     = filepath.Join(cwd, theirFile)
 		)
 
-		fmt.Printf("---> Rewriting %v\n", theirFile)
+		fmt.Printf("====> Rewriting %v\n", theirFile)
 
 		if err := os.Remove(their); err != nil {
 			if !os.IsNotExist(err) {
@@ -53,8 +53,6 @@ func run() error {
 			return err
 		}
 	}
-
-	fmt.Println()
 
 	// Get Godep workspace for custom modules.
 	modulesGodepWorkspace, err := godepWorkspace(cwd)
@@ -84,7 +82,13 @@ func run() error {
 		}
 	}
 
-	// Run `go install` for every executable package to be installed.
+	// Process the command string.
+	args := make([]string, 0, 2)
+	for _, part := range strings.Split(*cmdFlag, "$") {
+		args = append(args, strings.TrimSpace(part))
+	}
+
+	// Run the install command for every executable package to be installed.
 	packages := []string{
 		"github.com/salsaflow/salsaflow",
 		"github.com/salsaflow/salsaflow/bin/hooks/salsaflow-commit-msg",
@@ -92,16 +96,12 @@ func run() error {
 		"github.com/salsaflow/salsaflow/bin/hooks/salsaflow-pre-push",
 	}
 
-	// Process the command string.
-	args := make([]string, 0, 2)
-	for _, part := range strings.Split(*cmdFlag, "$") {
-		args = append(args, strings.TrimSpace(part))
-	}
-
 	for _, pkg := range packages {
-		fmt.Printf("---> Install %v\n", pkg)
+		fmt.Printf("\n====> Installing %v\n", pkg)
 
 		argv := append(args, pkg)
+		fmt.Printf("      cmd = %v\n\n", argv)
+
 		cmd := exec.Command(argv[0], argv[1:]...)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr

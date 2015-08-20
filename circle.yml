@@ -1,6 +1,6 @@
 dependencies:
   cache_directories:
-    - "~/cache/gonative"
+    - "../cache/gonative"
   pre:
     - "git submodule init"
     - "git submodule update"
@@ -12,3 +12,5 @@ dependencies:
 test:
   override:
     - "echo 'NO TESTS'"
+  post:
+    - "./circle/pack.bash"
