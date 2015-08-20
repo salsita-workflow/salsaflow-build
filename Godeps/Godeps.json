@@ -1,0 +1,148 @@
+{
+	"ImportPath": "github.com/salsita-workflow/salsaflow-build",
+	"GoVersion": "go1.5",
+	"Packages": [
+		"github.com/salsita-workflow/salsaflow-build/modules/jira",
+		"github.com/salsita-workflow/salsaflow-build/modules/reviewboard"
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/blang/semver",
+			"Comment": "v3.0.1",
+			"Rev": "31b736133b98f26d5e078ec9eb591666edfd091f"
+		},
+		{
+			"ImportPath": "github.com/fatih/color",
+			"Comment": "v0.1-5-gf773d4c",
+			"Rev": "f773d4c806cc8e4a5749d6a35e2a4bbcd71443d6"
+		},
+		{
+			"ImportPath": "github.com/google/go-querystring/query",
+			"Rev": "547ef5ac979778feb2f760cdb5f4eae1a2207b86"
+		},
+		{
+			"ImportPath": "github.com/kardianos/osext",
+			"Rev": "6e7f843663477789fac7c02def0d0909e969b4e5"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-isatty",
+			"Rev": "7fcbc72f853b92b5720db4a6b8482be612daef24"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/action",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/app/appflags",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/app/metadata",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/asciiart",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/changes",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/config",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/errs",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/fileutil",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/flag",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/git",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/hooks",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/log",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/modules/common",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/prompt",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/releases",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/repo",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/scripts",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/shell",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsaflow/salsaflow/version",
+			"Comment": "v0.2.0-635-g5a922d4",
+			"Rev": "5a922d486cde52bb999a90d8581c88e7ca4a8cc6"
+		},
+		{
+			"ImportPath": "github.com/salsita/go-jira/v2/jira",
+			"Rev": "96f003574571a8b744e2f2a6df6fe52dd1d09c4c"
+		},
+		{
+			"ImportPath": "github.com/shiena/ansicolor",
+			"Rev": "a5e2b567a4dd6cc74545b8a4f27c9d63b9e7735b"
+		},
+		{
+			"ImportPath": "github.com/tchap/oauth",
+			"Rev": "d1214b4ac4b16fedaf83df0732fe80be9683bd96"
+		},
+		{
+			"ImportPath": "github.com/toqueteos/webbrowser",
+			"Comment": "v1.0",
+			"Rev": "21fc9f95c83442fd164094666f7cb4f9fdd56cd6"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Rev": "7ad95dd0798a40da1ccdff6dff35fd177b5edf40"
+		}
+	]
+}
