@@ -49,13 +49,17 @@ func run() error {
 	fmt.Println()
 
 	// Get Godep workspace for .
-	moduleWorkspace, err = godepWorkspace(cwd)
+	modulesGodepWorkspace, err = godepWorkspace(cwd)
 	if err != nil {
 		return err
 	}
 
-	// Get Godep workspace for ./salsaflow
-	salsaflowWorkspace, err := godepWorkspace(filepath.Join(cwd, "salsaflow"))
+	// Get workspace for SalsaFlow.
+	salsaflowWorkspace := filepath.Join(cwd, "workspace")
+
+	// Get Godep workspace for SalsaFlow.
+	salsaflowGodepWorkspace, err := godepWorkspace(
+		filepath.Join(salsaflowWorkspace, "src/github.com/salsaflow/salsaflow"))
 	if err != nil {
 		return err
 	}
@@ -76,7 +80,23 @@ func run() error {
 	}
 
 	packages := []string{
-		"github.com/salsita-workflow/"
+		"github.com/salsaflow/salsaflow",
+		"github.com/salsaflow/salsaflow/bin/hooks/salsaflow-commit-msg",
+		"github.com/salsaflow/salsaflow/bin/hooks/salsaflow-post-checkout",
+		"github.com/salsaflow/salsaflow/bin/hooks/salsaflow-pre-push",
+	}
+
+	for _, pkg := range packages {
+		fmt.Printf("---> go install %v\n", pkg)
+
+		cmd := exec.Command("go", "install", pkg)
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		cmd.Env = env
+
+		if err := cmd.Run(); err != nil {
+			return err
+		}
 	}
 
 	return nil
