@@ -1,7 +1,7 @@
 package modules
 
 import (
-	"jira"
+	"modules/jira"
 
 	"github.com/salsaflow/salsaflow/modules/issue_trackers/pivotaltracker"
 )

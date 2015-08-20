@@ -35,13 +35,13 @@ func run() error {
 
 	for _, name := range fileNames {
 		var (
-			ourFile   = filepath.Join("assets", name)
+			ourFile   = filepath.Join("resources", name)
 			our       = filepath.Join(cwd, ourFile)
 			theirFile = filepath.Join("workspace/src/github.com/salsaflow/salsaflow/modules", name)
 			their     = filepath.Join(cwd, theirFile)
 		)
 
-		fmt.Printf("====> Rewriting %v\n", theirFile)
+		fmt.Printf("===> Rewriting %v\n", theirFile)
 
 		if err := os.Remove(their); err != nil {
 			if !os.IsNotExist(err) {
@@ -97,11 +97,11 @@ func run() error {
 	}
 
 	for _, pkg := range packages {
-		fmt.Printf("\n====> Installing %v\n", pkg)
+		fmt.Println()
+		fmt.Printf("===> Installing %v\n", pkg)
+		fmt.Printf("     (using cmd = %v)\n\n", args)
 
 		argv := append(args, pkg)
-		fmt.Printf("      cmd = %v\n\n", argv)
-
 		cmd := exec.Command(argv[0], argv[1:]...)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr

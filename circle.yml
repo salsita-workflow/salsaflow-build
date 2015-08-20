@@ -6,11 +6,11 @@ dependencies:
     - "git submodule update"
     - "go get github.com/tools/godep"
     - "go get github.com/mitchellh/gox"
-    - "./circle/build_gonative.bash"
+    - "./circle_scripts/setup_gonative.bash"
   override:
-    - "./circle/install.bash"
+    - "./circle_scripts/install.bash"
 test:
   override:
     - "echo 'NO TESTS'"
   post:
-    - "./circle/pack.bash"
+    - "./circle_scripts/pack.bash"
