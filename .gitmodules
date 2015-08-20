@@ -1,0 +1,3 @@
+[submodule "salsaflow"]
+	path = salsaflow
+	url = https://github.com/salsaflow/salsaflow
