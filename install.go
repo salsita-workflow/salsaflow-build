@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -17,6 +18,9 @@ func main() {
 }
 
 func run() error {
+	cmdFlag := flag.String("cmd", "go $ install", "command to use to install individual packages")
+	flag.Parse()
+
 	fileNames := []string{
 		"issue_tracker_modules.go",
 		"code_review_tool_modules.go",
@@ -88,10 +92,17 @@ func run() error {
 		"github.com/salsaflow/salsaflow/bin/hooks/salsaflow-pre-push",
 	}
 
-	for _, pkg := range packages {
-		fmt.Printf("---> go install %v\n", pkg)
+	// Process the command string.
+	args := make([]string, 0, 2)
+	for _, part := range strings.Split(*cmdFlag, "$") {
+		args = append(args, strings.TrimSpace(part))
+	}
 
-		cmd := exec.Command("go", "install", pkg)
+	for _, pkg := range packages {
+		fmt.Printf("---> Install %v\n", pkg)
+
+		argv := append(args, pkg)
+		cmd := exec.Command(argv[0], argv[1:]...)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		cmd.Env = env
