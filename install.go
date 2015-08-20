@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 )
 
 func main() {
@@ -64,22 +65,22 @@ func run() error {
 		return err
 	}
 
-	// Install SalsaFlow.
-	var (
-		path   = os.Getenv("PATH")
-		goroot = os.Getenv("GOROOT")
-		gopath = os.Getenv("GOPATH")
-	)
+	// Generate environment for running `go install`.
+	// Inherit PATH and all GO* variables, except GOPATH.
+	gopath := fmt.Sprintf("%v:%v:%v",
+		salsaflowWorkspace, salsaflowGodepWorkspace, modulesGodepWorkspace)
 
-	gopath = fmt.Sprintf("%v:%v:%v:%v",
-		salsaflowWorkspace, salsaflowGodepWorkspace, modulesGodepWorkspace, gopath)
-
-	env := []string{
-		"PATH=" + path,
-		"GOROOT=" + goroot,
-		"GOPATH=" + gopath,
+	currentEnv := os.Environ()
+	env := make([]string, 2, len(currentEnv)+2)
+	env[0] = "PATH=" + os.Getenv("PATH")
+	env[1] = "GOPATH=" + gopath
+	for _, kv := range currentEnv {
+		if strings.HasPrefix(kv, "GO") && !strings.HasPrefix(kv, "GOPATH=") {
+			env = append(env, kv)
+		}
 	}
 
+	// Run `go install` for every executable package to be installed.
 	packages := []string{
 		"github.com/salsaflow/salsaflow",
 		"github.com/salsaflow/salsaflow/bin/hooks/salsaflow-commit-msg",
