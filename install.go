@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"log"
 	"os"
@@ -31,7 +32,7 @@ func run() error {
 		var (
 			ourFile   = filepath.Join("assets", name)
 			our       = filepath.Join(cwd, ourFile)
-			theirFile = filepath.Join(salsaflowWorkspace, "src/github.com/salsaflow/salsaflow/modules", name)
+			theirFile = filepath.Join("workspace/src/github.com/salsaflow/salsaflow/modules", name)
 			their     = filepath.Join(cwd, theirFile)
 		)
 
@@ -51,7 +52,7 @@ func run() error {
 	fmt.Println()
 
 	// Get Godep workspace for custom modules.
-	modulesGodepWorkspace, err = godepWorkspace(cwd)
+	modulesGodepWorkspace, err := godepWorkspace(cwd)
 	if err != nil {
 		return err
 	}
@@ -71,7 +72,7 @@ func run() error {
 	)
 
 	gopath = fmt.Sprintf("%v:%v:%v:%v",
-		modulesGodepWorkspace, salsaflowGodepWorkspace, salsaflowWorkspace, gopath)
+		salsaflowWorkspace, salsaflowGodepWorkspace, modulesGodepWorkspace, gopath)
 
 	env := []string{
 		"PATH=" + path,
