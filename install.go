@@ -36,7 +36,7 @@ func run() error {
 			their     = filepath.Join(cwd, theirFile)
 		)
 
-		fmt.Printf("---> Replacing %v\n", theirFile)
+		fmt.Printf("---> Rewriting %v\n", theirFile)
 
 		if err := os.Remove(their); err != nil {
 			if !os.IsNotExist(err) {
