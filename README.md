@@ -12,6 +12,6 @@ The module sources can be found in `workspace/src/modules`.
 
 ## Build
 
-Run `go run install.go` to build `salsaflow` binaries. The script uses
-`go install` by default, so the executables will appear in `bin`
+Run `go run tasks/install.go` to build `salsaflow` binaries. The script
+uses `go install` by default, so the executables will appear in `bin`
 of your current workspace.
